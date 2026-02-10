@@ -1,16 +1,6 @@
 # DynamoDB Module for Gearify
 # Creates DynamoDB tables for Catalog, Tenant, and other services
 
-terraform {
-  required_version = ">= 1.5.0"
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
 # Products Table
 resource "aws_dynamodb_table" "products" {
   name         = "${var.project}-products-${var.environment}"

@@ -1,16 +1,6 @@
 # IRSA Module for Gearify
 # Creates IAM roles for Kubernetes service accounts
 
-terraform {
-  required_version = ">= 1.5.0"
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
 data "aws_caller_identity" "current" {}
 
 # Service-specific IAM roles

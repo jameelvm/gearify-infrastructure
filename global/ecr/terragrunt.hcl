@@ -8,6 +8,24 @@ terraform {
   source = "../../modules/ecr"
 }
 
+# Generate AWS provider with region (ECR is global, use us-east-1)
+generate "aws_provider" {
+  path      = "provider_aws.tf"
+  if_exists = "overwrite_terragrunt"
+  contents  = <<EOF
+provider "aws" {
+  region = "us-east-1"
+
+  default_tags {
+    tags = {
+      Project   = "gearify"
+      ManagedBy = "terragrunt"
+    }
+  }
+}
+EOF
+}
+
 inputs = {
   project                     = "gearify"
   image_tag_mutability        = "MUTABLE"

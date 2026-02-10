@@ -1,20 +1,6 @@
 # EKS Module for Gearify
 # Creates EKS cluster with managed node groups and IRSA configuration
 
-terraform {
-  required_version = ">= 1.5.0"
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-    tls = {
-      source  = "hashicorp/tls"
-      version = "~> 4.0"
-    }
-  }
-}
-
 # Data sources
 data "aws_caller_identity" "current" {}
 

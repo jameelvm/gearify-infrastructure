@@ -1,20 +1,6 @@
 # Secrets Manager Module for Gearify
 # Creates secrets for JWT, Stripe, and other service configurations
 
-terraform {
-  required_version = ">= 1.5.0"
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-    random = {
-      source  = "hashicorp/random"
-      version = "~> 3.0"
-    }
-  }
-}
-
 # Generate JWT secret
 resource "random_password" "jwt_secret" {
   length  = 64

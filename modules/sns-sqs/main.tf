@@ -1,16 +1,6 @@
 # SNS/SQS Module for Gearify
 # Creates event-driven messaging infrastructure
 
-terraform {
-  required_version = ">= 1.5.0"
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
 locals {
   # SNS Topics configuration
   sns_topics = {

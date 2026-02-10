@@ -1,4 +1,6 @@
 # OpenSearch configuration for Dev environment
+# DISABLED by default to save costs (~$35/month)
+# Set enable_opensearch = true in env.hcl to enable
 
 include "root" {
   path = find_in_parent_folders("terragrunt.hcl")
@@ -8,6 +10,9 @@ include "env" {
   path   = "${get_terragrunt_dir()}/../../env.hcl"
   expose = true
 }
+
+# Skip this module if OpenSearch is disabled
+skip = !include.env.locals.enable_opensearch
 
 terraform {
   source = "../../../../modules/opensearch"

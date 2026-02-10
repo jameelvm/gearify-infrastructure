@@ -1,0 +1,26 @@
+# VPC configuration for Dev environment
+
+include "root" {
+  path = find_in_parent_folders("terragrunt.hcl")
+}
+
+include "env" {
+  path   = "${get_terragrunt_dir()}/../../env.hcl"
+  expose = true
+}
+
+terraform {
+  source = "../../../../modules/vpc"
+}
+
+inputs = {
+  project               = "gearify"
+  environment           = include.env.locals.environment
+  aws_region            = include.env.locals.aws_region
+  vpc_cidr              = include.env.locals.vpc_cidr
+  az_count              = 3
+  nat_gateway_count     = include.env.locals.nat_gateway_count
+  enable_ecr_endpoints  = true
+  enable_secrets_endpoint = true
+  enable_sts_endpoint   = true
+}
